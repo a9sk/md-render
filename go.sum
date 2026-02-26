@@ -1,0 +1,4 @@
+github.com/kaleocheng/goldmark v1.1.10 h1:xXESYwWIRaZyACB/q83rFjntcakcZZ7JnVWoRD5gZoo=
+github.com/kaleocheng/goldmark v1.1.10/go.mod h1:1YrQUwo+Cke3rEd4q76I/FzwYjT+TL6EtC5M6ziYUic=
+github.com/yuin/goldmark v1.7.16 h1:n+CJdUxaFMiDUNnWC3dMWCIQJSkxH4uz3ZwQBkAlVNE=
+github.com/yuin/goldmark v1.7.16/go.mod h1:ip/1k0VRfGynBgxOz0yCqHrbZXhcjxyuS66Brc7iBKg=
