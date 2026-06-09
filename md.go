@@ -39,7 +39,18 @@ func main() {
 	}
 	defer tmpFile.Close()
 
-	fmt.Fprintf(tmpFile, `<html><head><base href="%s"><style>
+	fmt.Fprintf(tmpFile, `<html><head><base href="%s">
+				<script>
+					window.MathJax = {
+						tex: {
+							inlineMath: [['$', '$'], ['\\(', '\\)']],
+							displayMath: [['$$', '$$'], ['\\[', '\\]']]
+						},
+						svg: { fontCache: 'global' }
+					};
+				</script>
+				<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+				<style>
         body { font-family: -apple-system, Segoe UI, Helvetica, Arial, sans-serif; 
         max-width: 850px; margin: 50px auto; padding: 0 30px; line-height: 1.6; color: #333; }
         pre { background: #f6f8fa; padding: 16px; border-radius: 6px; overflow: auto; }
