@@ -39,7 +39,7 @@ func main() {
 	}
 	defer tmpFile.Close()
 
-	fmt.Fprintf(tmpFile, `<html><head><base href="%s">
+	fmt.Fprintf(tmpFile, `<html><head><meta charset="utf-8"><base href="%s">
 				<script>
 					window.MathJax = {
 						tex: {
