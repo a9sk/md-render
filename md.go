@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/kaleocheng/goldmark"
+	"github.com/kaleocheng/goldmark/extension"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -55,9 +56,13 @@ func main() {
         max-width: 850px; margin: 50px auto; padding: 0 30px; line-height: 1.6; color: #333; }
         pre { background: #f6f8fa; padding: 16px; border-radius: 6px; overflow: auto; }
         code { font-family: monospace; background: #afb8c133; padding: 0.2em 0.4em; border-radius: 6px; }
-        img { max-width: 100%%; display: block; margin: 0 auto; } </style></head><body>`, baseURL)
+        img { max-width: 100%%; display: block; margin: 0 auto; }
+        table { border-collapse: collapse; width: 100%%; margin: 1em 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; } </style></head><body>`, baseURL)
 
-	goldmark.Convert(content, tmpFile)
+	md := goldmark.New(goldmark.WithExtensions(extension.Table))
+	md.Convert(content, tmpFile)
 
 	fmt.Fprint(tmpFile, `</body></html>`)
 
