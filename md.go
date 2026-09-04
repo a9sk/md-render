@@ -61,7 +61,7 @@ func main() {
         th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
         th { background-color: #f2f2f2; } </style></head><body>`, baseURL)
 
-	md := goldmark.New(goldmark.WithExtensions(extension.Table))
+	md := goldmark.New(goldmark.WithExtensions(extension.Table, extension.Strikethrough))
 	md.Convert(content, tmpFile)
 
 	fmt.Fprint(tmpFile, `</body></html>`)
