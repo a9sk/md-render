@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/kaleocheng/goldmark"
 	"github.com/kaleocheng/goldmark/extension"
+	"github.com/kaleocheng/goldmark/renderer/html"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -61,7 +62,10 @@ func main() {
         th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
         th { background-color: #f2f2f2; } </style></head><body>`, baseURL)
 
-	md := goldmark.New(goldmark.WithExtensions(extension.Table, extension.Strikethrough))
+	md := goldmark.New(
+		goldmark.WithExtensions(extension.Table, extension.Strikethrough),
+		goldmark.WithRendererOptions(html.WithUnsafe()),
+	)
 	md.Convert(content, tmpFile)
 
 	fmt.Fprint(tmpFile, `</body></html>`)
