@@ -2,9 +2,10 @@ package main
 
 import (
 	"fmt"
-	"github.com/kaleocheng/goldmark"
-	"github.com/kaleocheng/goldmark/extension"
-	"github.com/kaleocheng/goldmark/renderer/html"
+	"github.com/yuin/goldmark"
+	"github.com/yuin/goldmark/extension"
+	"github.com/yuin/goldmark/renderer/html"
+	"go.abhg.dev/goldmark/mermaid"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -63,7 +64,11 @@ func main() {
         th { background-color: #f2f2f2; } </style></head><body>`, baseURL)
 
 	md := goldmark.New(
-		goldmark.WithExtensions(extension.Table, extension.Strikethrough),
+		goldmark.WithExtensions(
+			extension.Table,
+			extension.Strikethrough,
+			&mermaid.Extender{RenderMode: mermaid.RenderModeClient},
+		),
 		goldmark.WithRendererOptions(html.WithUnsafe()),
 	)
 	md.Convert(content, tmpFile)
